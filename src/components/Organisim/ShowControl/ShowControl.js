@@ -74,6 +74,7 @@ class ShowControl extends React.Component {
 
     if (this.state.editing) {
       currentlyVisibleState = <EditShowForm show= {this.state.selectedShow} onEditShow = {this.handleEditingShowInList} />
+      buttonText = 'Return To LIIIIISSSST';
     }
     else if (this.state.selectedShow !=null) {
       currentlyVisibleState = <ShowDetail 
@@ -91,6 +92,7 @@ class ShowControl extends React.Component {
     }
     return (
       <React.Fragment>
+        <h1>Show List</h1>
         {currentlyVisibleState}
         <button onClick={this.handleClick}>{buttonText}</button>
       </React.Fragment>
