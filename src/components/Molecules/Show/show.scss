@@ -1,0 +1,21 @@
+
+.show {
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  .showCard {
+    width: 75%;
+    height: auto;
+      border: 1px solid red;
+      display:flex;
+      flex-direction: column;
+      align-items: center;
+      margin:5px;  
+
+    .showPhoto {
+      height: 200px;
+      width: 300px;
+      background-color: lightslategray;
+    }  
+  }
+}
