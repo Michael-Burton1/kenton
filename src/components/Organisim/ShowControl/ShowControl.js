@@ -14,9 +14,16 @@ class ShowControl extends React.Component {
     };
   }
   handleClick = () => {
-    this.setState(prevState => ({
-      formVisibleOnPage: !prevState.formVisibleOnPage
-    }));
+    if (this.state.selectedShow != null) {
+      this.setState({
+        formVisibleOnPage: false,
+        selectedShow: null
+      });
+    } else {
+      this.setState(prevState => ({
+        formVisibleOnPage: !prevState.formVisibleOnPage,
+      }));
+    }
   }
 
   handleAddingNewShowToList = (newShow) => {
