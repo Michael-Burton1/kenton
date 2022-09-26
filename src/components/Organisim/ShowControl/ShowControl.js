@@ -32,6 +32,7 @@ class ShowControl extends React.Component {
         {currentlyVisibleState}
         <button onClick={this.handleClick}>{buttonText}</button>
       </React.Fragment>
+      // test
     );
   }
 
