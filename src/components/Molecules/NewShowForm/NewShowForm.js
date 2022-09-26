@@ -9,8 +9,8 @@ function NewShowForm(props) {
     event.preventDefault();
     props.onNewShowCreation({
       date: event.target.date.value,
-      name: event.target.name.value,
-      support: event.target.support.value,
+      name: event.target.name.value.toUpperCase(),
+      support: event.target.support.value.toUpperCase(),
       photo: event.target.photo.value,
       time: event.target.time.value,
       price: event.target.price.value,
