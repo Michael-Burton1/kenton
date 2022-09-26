@@ -39,12 +39,20 @@ class ShowControl extends React.Component {
     this.setState({selectedShow: selectedShow});
   }
 
+  handleDeletingShow = (id) => {
+    const newMainShowList = this.state.mainShowList.filter(show => show.id !== id);
+    this.setState({
+      mainShowList: newMainShowList,
+      selectedShow: null
+    });
+  }
+
   render(){
     let currentlyVisibleState= null;
     let buttonText =null;
 
     if (this.state.selectedShow !=null) {
-      currentlyVisibleState = <ShowDetail show = {this.state.selectedShow}/>
+      currentlyVisibleState = <ShowDetail show = {this.state.selectedShow} onClickingDelete = {this.handleDeletingShow}/>
       buttonText = 'Return to Show list';
     }
     else if (this.state.formVisibleOnPage) {
