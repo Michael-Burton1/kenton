@@ -7,15 +7,15 @@ function Show(props) {
   return (
     <div className='show'>
       <div className='showCard' onClick = {() => props.whenShowClicked(props.id)}>
-        <h3> {props.date} </h3>
-        <h4> THIS BAR PRESENTS </h4>
-        <h1> {props.name} </h1>
+        <h3 className='showCardDate'> {props.date} </h3>
+        <h4 className='showCardPresents'> The World Famous Kenton Club Presents: </h4>
+        <h1 className='showCardName'> {props.name} </h1>
         <p>and</p>
-        <h2> {props.support}</h2>
+        <h2 className='showCardSupport'> {props.support}</h2>
         <div className='showPhoto'>
           {props.photo}    
         </div>
-        <div>
+        <div className='showCardDateTime'>
           {props.time},
           {props.price}
         </div>
