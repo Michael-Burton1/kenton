@@ -11,22 +11,25 @@ class ShowControl extends React.Component {
     };
   }
   handleClick = () => {
-    this.setState({formVisibleOnPage: true});
+    this.setState(prevState => ({
+      formVisibleOnPage: !prevState.formVisibleOnPage
+    }));
   }
   render(){
     let currentlyVisibleState= null;
-    let addShowButton =null;
+    let buttonText =null;
 
     if (this.state.formVisibleOnPage) {
       currentlyVisibleState = <NewShowForm />
+      buttonText= 'Return to show list';
     } else {
       currentlyVisibleState= <ShowList />
-      addShowButton= <button onClick={this.handleClick}>Add Show</button>
+      buttonText="Add ticket";
     }
     return (
       <React.Fragment>
         {currentlyVisibleState}
-        {addShowButton}
+        <button onClick={this.handleClick}>{buttonText}</button>
       </React.Fragment>
     );
   }
