@@ -1,30 +1,13 @@
 import React from 'react';
 import Show from '../../Molecules/Show/Show';
+import PropTypes from "prop-types";
 
-const MainShowList= [
-  {
-    name :'Lady Gaga',
-    date :'10/12/22',
-    support:'David',
-    photo: 'some Band Photo',
-    time: '7:00',
-    price: '$10'
-  },
-  {
-    name :'Antonio Carlos Jambim',
-    date :'10/13/22',
-    support:'Budos Band',
-    photo: 'some Band Photo',
-    time: '7:00',
-    price: '$10'
-  }
-]
 
-const ShowList = () => {
+function ShowList(props) {
   return (
     <div>
       <hr/>
-      {MainShowList.map((show,index) =>
+      {props.showList.map((show,index) =>
         <Show 
           name = {show.name}
           date = {show.date}
@@ -37,6 +20,10 @@ const ShowList = () => {
       )}
     </div>
   );
+}
+
+ShowList.propTypes = {
+  showList: PropTypes.array
 }
 
 export default ShowList;

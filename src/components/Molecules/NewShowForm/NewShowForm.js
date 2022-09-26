@@ -1,15 +1,20 @@
 import React from 'react';
+import Proptypes from 'prop-types';
+import { v4 } from 'uuid';
 
 function NewShowForm(props) {
 
   function handleNewShowFormSubmission(event) {
     event.preventDefault();
-    console.log(event.target.date.value);
-    console.log(event.target.name.value);
-    console.log(event.target.support.value);
-    console.log(event.target.photo.value);
-    console.log(event.target.time.value);
-    console.log(event.target.price.value);
+    props.onNewShowCreation({
+      date: event.target.date.value,
+      name: event.target.name.value,
+      support: event.target.support.value,
+      photo: event.target.photo.value,
+      time: event.target.time.value,
+      price: event.target.price.value,
+      id: v4()
+    })
   }
   return (
     <React.Fragment>
@@ -24,6 +29,10 @@ function NewShowForm(props) {
       </form>
     </React.Fragment>
   );
+}
+
+NewShowForm.propTypes = {
+  onNewShowCreation: Proptypes.func
 }
 
 export default NewShowForm;

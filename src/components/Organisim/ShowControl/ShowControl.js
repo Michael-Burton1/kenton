@@ -7,7 +7,8 @@ class ShowControl extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      formVisibleOnPage: false
+      formVisibleOnPage: false,
+      mainShowList: []
     };
   }
   handleClick = () => {
@@ -16,15 +17,23 @@ class ShowControl extends React.Component {
     }));
   }
 
+  handleAddingNewShowToList = (newShow) => {
+    const newMainShowList = this.state.mainShowList.concat(newShow);
+    this.setState({
+      mainShowList: newMainShowList,
+      formVisibleOnPage:false
+    })
+  }
+
   render(){
     let currentlyVisibleState= null;
     let buttonText =null;
 
     if (this.state.formVisibleOnPage) {
-      currentlyVisibleState = <NewShowForm />
+      currentlyVisibleState = <NewShowForm onNewShowCreation={this.handleAddingNewShowToList}/>
       buttonText= 'Return to show list';
     } else {
-      currentlyVisibleState= <ShowList />
+      currentlyVisibleState= <ShowList showList={this.state.mainShowList} />
       buttonText="Add ticket";
     }
     return (
