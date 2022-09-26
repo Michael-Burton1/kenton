@@ -1,0 +1,13 @@
+.reusableForm {
+  background-color: yellow;
+  display: flex;
+  flex-direction: column;
+  margin-bottom:5px;
+  padding-bottom:5px;
+  padding-top:5px;
+
+  .reusableFormInputs {
+    display: flex;
+    flex-direction: column;
+  }
+}
