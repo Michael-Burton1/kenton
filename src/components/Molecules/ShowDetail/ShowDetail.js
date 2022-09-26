@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 import '../ShowDetail/showDetail.scss'
 
 function ShowDetail(props) {
-  const { show }= props;
+  const { show, onClickingDelete }= props;
+
 
   return (
-    <div>
+    <div className='showDetailContainer'>
       <h1>Show details</h1>
       <div className='showDetail'>
         <div className='showDetailDate'>
@@ -31,12 +32,14 @@ function ShowDetail(props) {
           <p>showID: </p><p>{show.id}</p>
         </div>
       </div>
+      <button onClick={() => onClickingDelete(show.id)}>Delete Show</button>
     </div>
   );
 }
 
 ShowDetail.propTypes = {
-  show: PropTypes.object
+  show: PropTypes.object,
+  onClickingDelete: PropTypes.func
 }
 
 export default ShowDetail;
