@@ -6,7 +6,7 @@ function Show(props) {
 
   return (
     <div className='show'>
-      <div className='showCard'>
+      <div className='showCard' onClick = {() => props.whenShowClicked(props.id)}>
         <h3> {props.date} </h3>
         <h4> THIS BAR PRESENTS </h4>
         <h1> {props.name} </h1>
@@ -29,7 +29,9 @@ Show.propTypes = {
   support: PropTypes.string,
   photo: PropTypes.string,
   time: PropTypes.string.isRequired,
-  price: PropTypes.string.isRequired
+  price: PropTypes.string.isRequired,
+  id: PropTypes.string,
+  whenShowClicked: PropTypes.func
 }
 
 export default Show;

@@ -1,6 +1,7 @@
 import React from 'react';
 import NewShowForm from '../../Molecules/NewShowForm/NewShowForm';
 import ShowList from '../ShowList/ShowList';
+import ShowDetail from '../../Molecules/ShowDetail/ShowDetail';
 
 class ShowControl extends React.Component {
 
@@ -26,15 +27,24 @@ class ShowControl extends React.Component {
     })
   }
 
+  handleChangingSelectedShow = (id) => {
+    const selectedShow =this.state.mainShowList.filter(show => show.id === id)[0];
+    this.setState({selectedShow: selectedShow});
+  }
+
   render(){
     let currentlyVisibleState= null;
     let buttonText =null;
 
-    if (this.state.formVisibleOnPage) {
+    if (this.state.selectedShow !=null) {
+      currentlyVisibleState = <ShowDetail show = {this.state.selectedShow}/>
+      buttonText = 'Return to Show list';
+    }
+    else if (this.state.formVisibleOnPage) {
       currentlyVisibleState = <NewShowForm onNewShowCreation={this.handleAddingNewShowToList}/>
       buttonText= 'Return to show list';
     } else {
-      currentlyVisibleState= <ShowList showList={this.state.mainShowList} />
+      currentlyVisibleState= <ShowList showList={this.state.mainShowList} onShowSelection={this.handleChangingSelectedShow}/>
       buttonText="Add ticket";
     }
     return (

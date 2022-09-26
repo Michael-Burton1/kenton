@@ -7,15 +7,17 @@ function ShowList(props) {
   return (
     <div>
       <hr/>
-      {props.showList.map((show,index) =>
+      {props.showList.map((show) =>
         <Show 
+          whenShowClicked = {props.onShowSelection}
           name = {show.name}
           date = {show.date}
           support= {show.support}
           photo= {show.photo}
           time= {show.time}
           price= {show.price}
-          key={index}
+          id={show.id}
+          key={show.id}
         />
       )}
     </div>
@@ -23,7 +25,8 @@ function ShowList(props) {
 }
 
 ShowList.propTypes = {
-  showList: PropTypes.array
-}
+  showList: PropTypes.array,
+  onShowSelection: PropTypes.func
+};
 
 export default ShowList;
