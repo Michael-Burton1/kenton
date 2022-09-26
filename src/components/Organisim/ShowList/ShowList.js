@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 
 function ShowList(props) {
   return (
-    <div>
+    <div className='showList'>
       <hr/>
       {props.showList.map((show) =>
         <Show 
