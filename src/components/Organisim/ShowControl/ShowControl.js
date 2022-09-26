@@ -2,6 +2,7 @@ import React from 'react';
 import NewShowForm from '../../Molecules/NewShowForm/NewShowForm';
 import ShowList from '../ShowList/ShowList';
 import ShowDetail from '../../Molecules/ShowDetail/ShowDetail';
+import EditShowForm from '../../Molecules/EditShowForm/EditShowForm';
 
 class ShowControl extends React.Component {
 
@@ -10,14 +11,16 @@ class ShowControl extends React.Component {
     this.state = {
       formVisibleOnPage: false,
       mainShowList: [],
-      selectedShow: null
+      selectedShow: null,
+      editing: false
     };
   }
   handleClick = () => {
     if (this.state.selectedShow != null) {
       this.setState({
         formVisibleOnPage: false,
-        selectedShow: null
+        selectedShow: null,
+        editing: false
       });
     } else {
       this.setState(prevState => ({
@@ -47,12 +50,36 @@ class ShowControl extends React.Component {
     });
   }
 
+  handleEditClick = () => {
+    console.log(this.state.editing);
+    console.log('handle edit click reached');
+    this.setState({editing : true}); //I think this is where Im getting screwed up. Why dosn't the second log show a new state for editing??
+    console.log(this.state.editing);
+  }
+
+  handleEditingShowInList = (showToEdit) => {
+    const editedMainShowList = this.state.mainShowList
+    .filter(show => show.id !== this.state.selectedShow.id)
+    .concat(showToEdit);
+    this.setState({
+      mainShowList: editedMainShowList,
+      editing: false,
+      selectedShow: null
+    });
+  }
+
   render(){
     let currentlyVisibleState= null;
     let buttonText =null;
 
-    if (this.state.selectedShow !=null) {
-      currentlyVisibleState = <ShowDetail show = {this.state.selectedShow} onClickingDelete = {this.handleDeletingShow}/>
+    if (this.state.editing) {
+      currentlyVisibleState = <EditShowForm show= {this.state.selectedShow} onEditShow = {this.handleEditingShowInList} />
+    }
+    else if (this.state.selectedShow !=null) {
+      currentlyVisibleState = <ShowDetail 
+        show = {this.state.selectedShow} 
+        onClickingDelete = {this.handleDeletingShow}
+        onClickingEdit = {this.handleEditClick}/>
       buttonText = 'Return to Show list';
     }
     else if (this.state.formVisibleOnPage) {

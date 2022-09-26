@@ -32,6 +32,7 @@ function ShowDetail(props) {
           <p>showID: </p><p>{show.id}</p>
         </div>
       </div>
+      <button onClick={ props.onClickingEdit }>Update Show</button>
       <button onClick={() => onClickingDelete(show.id)}>Delete Show</button>
     </div>
   );
@@ -39,7 +40,8 @@ function ShowDetail(props) {
 
 ShowDetail.propTypes = {
   show: PropTypes.object,
-  onClickingDelete: PropTypes.func
+  onClickingDelete: PropTypes.func,
+  onClickingEdit: PropTypes.func
 }
 
 export default ShowDetail;
