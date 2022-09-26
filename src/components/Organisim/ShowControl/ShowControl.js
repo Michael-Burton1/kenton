@@ -8,7 +8,8 @@ class ShowControl extends React.Component {
     super(props);
     this.state = {
       formVisibleOnPage: false,
-      mainShowList: []
+      mainShowList: [],
+      selectedShow: null
     };
   }
   handleClick = () => {
