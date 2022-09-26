@@ -1,6 +1,7 @@
 import React from 'react';
 import Proptypes from 'prop-types';
 import { v4 } from 'uuid';
+import ReusableForm from '../../Atoms/ReuseableForm/ReusableForm';
 
 function NewShowForm(props) {
 
@@ -18,15 +19,9 @@ function NewShowForm(props) {
   }
   return (
     <React.Fragment>
-      <form onSubmit={handleNewShowFormSubmission}>
-        <input type="text" name="date" placeholder="Location" />
-        <input type="text" name="name" placeholder='Headliner Name' />
-        <input type="text" name="support" placeholder="support name" />
-        <input type="text" name="photo" placeholder="photo" />
-        <input type="text" name="time" placeholder="time" />
-        <input type="text" name="price" placeholder="price" />
-        <button type='submit'>Add show to list</button>
-      </form>
+      <ReusableForm 
+        formSubmissionHandler={handleNewShowFormSubmission}
+        buttonText='Add show to list'/>
     </React.Fragment>
   );
 }
